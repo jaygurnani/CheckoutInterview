@@ -5,5 +5,54 @@
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10830653"
 	},
-	"item": []
+	"item": [
+		{
+			"name": "Get Previous Payment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/weatherforecast",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"weatherforecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Previous Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"merchantId\": 3,\n     \"payment\":\n        {\n            \"creditCardNumber\": \"375719488708001\",\n            \"expiryMonth\": \"10\",\n            \"expiryYear\": \"21\",\n            \"amount\": 336.0,\n            \"currency\": \"GBP\",\n            \"cardIssuer\": \"VISA\",\n            \"cvv\": \"760\"\n        }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:5001/merchant/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"merchant",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
 }

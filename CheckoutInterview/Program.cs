@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CheckoutInterview.MockDBSeeder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-namespace CheckoutInterview
+﻿namespace CheckoutInterview
 {
+    using CheckoutInterview.MockDBSeeder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Hosting;
+
     public class Program
     {
         public static void Main(string[] args)
         {
-            DbHelper.SeedDb(100);
+            DBHelper.SeedDb(100);
             CreateHostBuilder(args).Build().Run();
         }
 

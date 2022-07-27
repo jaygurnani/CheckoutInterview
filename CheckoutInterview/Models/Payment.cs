@@ -1,8 +1,9 @@
 ﻿namespace CheckoutInterview.Models
 {
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
-    public class PaymentModel
+    public class Payment
     {
         [JsonProperty("creditCardNumber")]
         public string CreditCardNumber { get; set; }
@@ -17,9 +18,11 @@
         public decimal Amount { get; set; }
 
         [JsonProperty("currency")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Currency Currency { get; set; }
 
         [JsonProperty("cardIssuer")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public CardBrand CardIssuer { get; set; }
 
         [JsonProperty("cvv")]

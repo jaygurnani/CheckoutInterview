@@ -1,8 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace CheckoutInterview.Models
+﻿namespace CheckoutInterview.Models
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     public class PaymentRecord
     {
         [JsonProperty("paymentRecordId")]
@@ -12,9 +12,9 @@ namespace CheckoutInterview.Models
         public int MerchantId { get; set; }
 
         [JsonProperty("success")]
-        public bool Success { get; set; }
+        public bool IsSuccess { get; set; }
 
         [JsonProperty("payment")]
-        public PaymentModel Payment { get; set; }
+        public Payment Payment { get; set; }
     }
 }

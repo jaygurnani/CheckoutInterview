@@ -19,8 +19,8 @@
                 {
                     PaymentRecordId = i,
                     MerchantId = new Random().Next(1, 5),
-                    Success = i % 2 == 0,
-                    Payment = new PaymentModel
+                    IsSuccess = i % 2 == 0,
+                    Payment = new Payment
                     {
                         CreditCardNumber = CreditCardFactory.RandomCardNumber(MapToCardIssuer(GetRandomEnum<CardBrand>())),
                         ExpiryMonth = new Random().Next(1, 12).ToString(),
@@ -31,13 +31,13 @@
                     },
                 };
 
-                _data.Add(item);
+                data.Add(item);
             }
 
             using (StreamWriter f = new StreamWriter("./MockDB.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(f, _data);
+                serializer.Serialize(f, data);
             }
         }
 
