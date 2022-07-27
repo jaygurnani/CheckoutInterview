@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-
-namespace CheckoutInterview.Models
+﻿namespace CheckoutInterview.Models
 {
+    using Newtonsoft.Json;
+
     public class PaymentModel
     {
         [JsonProperty("creditCardNumber")]
@@ -26,4 +26,3 @@ namespace CheckoutInterview.Models
         public string CVV { get; set; }
     }
 }
-

@@ -1,25 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using CheckoutInterview.Models;
-using CreditCardValidator;
-using Newtonsoft.Json;
-using System.Linq;
-
-namespace CheckoutInterview.MockDBSeeder
+﻿namespace CheckoutInterview.MockDBSeeder
 {
-    public static class DbHelper
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using CheckoutInterview.Models;
+    using CreditCardValidator;
+    using Newtonsoft.Json;
+
+    public static class DBHelper
     {
         public static void SeedDb(int size)
         {
-            List<PaymentRecord> _data = new List<PaymentRecord>();
+            List<PaymentRecord> data = new List<PaymentRecord>();
 
-            for(int i = 1; i <= size; i++)
+            for (int i = 1; i <= size; i++)
             {
                 PaymentRecord item = new PaymentRecord
                 {
                     PaymentRecordId = i,
-                    Success = (i % 2 == 0),
+                    MerchantId = new Random().Next(1, 5),
+                    Success = i % 2 == 0,
                     Payment = new PaymentModel
                     {
                         CreditCardNumber = CreditCardFactory.RandomCardNumber(MapToCardIssuer(GetRandomEnum<CardBrand>())),
@@ -28,7 +28,7 @@ namespace CheckoutInterview.MockDBSeeder
                         Amount = new Random().Next(1, 1000),
                         Currency = GetRandomEnum<Currency>(),
                         CVV = new Random().Next(111, 999).ToString(),
-                    }
+                    },
                 };
 
                 _data.Add(item);
@@ -40,7 +40,6 @@ namespace CheckoutInterview.MockDBSeeder
                 serializer.Serialize(f, _data);
             }
         }
-
 
         public static T GetRandomEnum<T>()
         {
@@ -57,21 +56,19 @@ namespace CheckoutInterview.MockDBSeeder
             {
                 case CardBrand.VISA:
                     internalCard = CardIssuer.Visa;
-                        break;
+                    break;
                 case CardBrand.AMEX:
                     internalCard = CardIssuer.AmericanExpress;
-                        break;
+                    break;
                 case CardBrand.MASTERCARD:
                     internalCard = CardIssuer.MasterCard;
-                        break;
+                    break;
                 default:
                     internalCard = CardIssuer.Visa;
-                        break;
+                    break;
             }
 
             return internalCard;
         }
-
     }
 }
-

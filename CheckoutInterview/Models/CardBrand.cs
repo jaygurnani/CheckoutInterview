@@ -1,11 +1,9 @@
-﻿using System;
-namespace CheckoutInterview.Models
+﻿namespace CheckoutInterview.Models
 {
     public enum CardBrand
     {
         VISA,
         AMEX,
-        MASTERCARD
+        MASTERCARD,
     }
 }
-

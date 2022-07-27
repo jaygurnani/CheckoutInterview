@@ -8,6 +8,9 @@ namespace CheckoutInterview.Models
         [JsonProperty("paymentRecordId")]
         public int PaymentRecordId { get; set; }
 
+        [JsonProperty("merchantId")]
+        public int MerchantId { get; set; }
+
         [JsonProperty("success")]
         public bool Success { get; set; }
 

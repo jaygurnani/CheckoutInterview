@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace CheckoutInterview.Controllers
+﻿namespace CheckoutInterview.Controllers
 {
+    using System;
+    using CheckoutInterview.Repositories;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+
     [ApiController]
     [Route("[controller]")]
     public class MerchantController : ControllerBase
@@ -14,13 +12,13 @@ namespace CheckoutInterview.Controllers
 
         private readonly ILogger<MerchantController> _logger;
 
-        public MerchantController(ILogger<MerchantController> logger)
+        public MerchantController(ILogger<MerchantController> logger, IMockDBRepository mockDBRepository)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public String Get()
+        public string Get()
         {
             var rng = new Random();
             return rng.ToString();
