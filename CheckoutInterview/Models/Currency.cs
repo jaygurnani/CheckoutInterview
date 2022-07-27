@@ -1,11 +1,12 @@
 ﻿using System;
 namespace CheckoutInterview.Models
 {
-    public class Currency
+    public enum Currency
     {
-        public Currency()
-        {
-        }
+        USD,
+        GBP,
+        EUR,
+        AUD
     }
 }
 

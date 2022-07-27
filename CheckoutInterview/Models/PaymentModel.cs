@@ -19,6 +19,9 @@ namespace CheckoutInterview.Models
         [JsonProperty("currency")]
         public Currency Currency { get; set; }
 
+        [JsonProperty("cardIssuer")]
+        public CardBrand CardIssuer { get; set; }
+
         [JsonProperty("cvv")]
         public string CVV { get; set; }
     }

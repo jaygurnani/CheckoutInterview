@@ -9,7 +9,7 @@ namespace CheckoutInterview.Models
         public int PaymentRecordId { get; set; }
 
         [JsonProperty("success")]
-        public bool success { get; set; }
+        public bool Success { get; set; }
 
         [JsonProperty("payment")]
         public PaymentModel Payment { get; set; }
