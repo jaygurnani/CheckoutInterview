@@ -23,6 +23,7 @@
             services.AddSingleton<IPaymentRecordRepository, MockDBRepository>();
             services.AddSingleton<IPaymentRecordService, PaymentRecordService>();
             services.AddControllers().AddNewtonsoftJson();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +44,9 @@
             {
                 endpoints.MapControllers();
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
         }
     }
 }
