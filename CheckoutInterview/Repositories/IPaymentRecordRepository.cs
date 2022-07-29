@@ -5,6 +5,7 @@
 
     public interface IPaymentRecordRepository
     {
+        // Get a payment record
         Tuple<PaymentRecord, int?> GetPaymentRecord(int merchantId, int paymentRecordId);
 
         // Return the Payment Record Id

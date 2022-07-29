@@ -9,13 +9,7 @@
 
     public static class DBHelper
     {
-        public enum CardBrand
-        {
-            VISA,
-            AMEX,
-            MASTERCARD,
-        }
-
+        // We use this to seed the database
         public static void SeedDb(int size)
         {
             List<PaymentRecord> data = new List<PaymentRecord>();
@@ -29,7 +23,7 @@
                     IsSuccess = i % 2 == 0,
                     Payment = new Payment
                     {
-                        CreditCardNumber = CreditCardFactory.RandomCardNumber(MapToCardIssuer(GetRandomEnum<CardBrand>())),
+                        CreditCardNumber = CreditCardFactory.RandomCardNumber(GetRandomCardIssuer()),
                         ExpiryMonth = new Random().Next(1, 12).ToString(),
                         ExpiryYear = new Random().Next(10, 25).ToString(),
                         Amount = new Random().Next(1, 1000),
@@ -56,27 +50,18 @@
             return randomEnum;
         }
 
-        public static CardIssuer MapToCardIssuer(CardBrand input)
+        // We pick from the below Enums because the Solo card scheme has been deprecated and we should not use it
+        public static CardIssuer GetRandomCardIssuer()
         {
-            CardIssuer internalCard;
-            switch (input)
+            Array values = new List<CardIssuer>()
             {
-                case CardBrand.VISA:
-                    internalCard = CardIssuer.Visa;
-                    break;
-                case CardBrand.AMEX:
-                    internalCard = CardIssuer.AmericanExpress;
-                    break;
-                case CardBrand.MASTERCARD:
-                    internalCard = CardIssuer.MasterCard;
-                    break;
-                default:
-                    internalCard = CardIssuer.Visa;
-                    break;
-            }
+                CardIssuer.Visa,
+                CardIssuer.AmericanExpress,
+                CardIssuer.MasterCard,
+            }.ToArray();
 
-            return internalCard;
+            Random random = new Random();
+            return (CardIssuer)values.GetValue(random.Next(values.Length));
         }
     }
-
 }

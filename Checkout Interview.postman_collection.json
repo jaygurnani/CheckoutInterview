@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "59373083-cd52-423a-918a-4fb4f66b44a5",
+		"_postman_id": "70a226f8-d1e6-4bbe-8d40-58300e981116",
 		"name": "Checkout Interview",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "10830653"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -26,13 +25,13 @@
 			"response": []
 		},
 		{
-			"name": "Create New Previous Payment",
+			"name": "Create New Payment",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"merchantId\": 3,\n     \"payment\":\n        {\n            \"creditCardNumber\": \"375719488708001\",\n            \"expiryMonth\": \"10\",\n            \"expiryYear\": \"21\",\n            \"amount\": 336.0,\n            \"currency\": \"GBP\",\n            \"cardIssuer\": \"VISA\",\n            \"cvv\": \"760\"\n        }\n}",
+					"raw": "{\n     \"payment\":\n        {\n            \"creditCardNumber\": \"5217291348514798\",\n            \"expiryMonth\": \"10\",\n            \"expiryYear\": \"21\",\n            \"amount\": 336.0,\n            \"currency\": \"GBP\",\n            \"cardIssuer\": \"VISA\",\n            \"cvv\": \"760\"\n        }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,15 +39,16 @@
 					}
 				},
 				"url": {
-					"raw": "https://localhost:5001/merchant/",
+					"raw": "https://localhost:5001/api/Gateway/1",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "5001",
 					"path": [
-						"merchant",
-						""
+						"api",
+						"Gateway",
+						"1"
 					]
 				}
 			},

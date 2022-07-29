@@ -19,6 +19,12 @@
             _paymentRecordService = paymentRecordService;
         }
 
+        /// <summary>
+        /// Gets a previously created payment record.
+        /// </summary>
+        /// <param name="merchantId">The merchant's Id.</param>
+        /// <param name="paymentRecordId">The payment record Id.</param>
+        /// <returns>The payment record.</returns>
         [HttpGet]
         [Route("{merchantId:int}/{paymentRecordId:int}")]
         public IActionResult Get(int merchantId, int paymentRecordId)
@@ -39,6 +45,12 @@
             }
         }
 
+        /// <summary>
+        /// Creates a new payment record and returns the new payment record Id.
+        /// </summary>
+        /// <param name="merchantId">The merchants Id.</param>
+        /// <param name="paymentRequest">The payment request.</param>
+        /// <returns>The newly created payment record Id.</returns>
         [HttpPost]
         [Route("{merchantId:int}")]
         public IActionResult Post(int merchantId, [FromBody] PaymentRequest paymentRequest)
