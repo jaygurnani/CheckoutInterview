@@ -7,6 +7,7 @@ Navigate to the `CheckoutInterview` folder and run the following in a command li
 ```
 dotnet run
 ```
+
 Navigate to: `https://localhost:5001/swagger/`
 And you should be able to make a request via the Swagger UI
 Alternatively you import the Postman file `Checkout Interview.postman_collection.json` to test the requests
