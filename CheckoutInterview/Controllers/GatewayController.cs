@@ -20,18 +20,37 @@
         }
 
         [HttpGet]
-        [Route("{paymentRecordId:int}/{merchantId:int}")]
-        public IActionResult Get(int paymentRecordId, int merchantId)
+        [Route("{merchantId:int}/{paymentRecordId:int}")]
+        public IActionResult Get(int merchantId, int paymentRecordId)
         {
-            var recordPayment = _paymentRecordService.GetPaymentRecord(paymentRecordId, merchantId);
-            return Ok(recordPayment);
+            try
+            {
+                var getPaymentRecord = _paymentRecordService.GetPaymentRecord(merchantId, paymentRecordId);
+                var response = new GetResponse
+                {
+                    PaymentRecord = getPaymentRecord.Item1,
+                    NextItem = getPaymentRecord.Item2,
+                };
+
+                return Ok(response);
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] PaymentRequest paymentRequest)
+        [Route("{merchantId:int}")]
+        public IActionResult Post(int merchantId, [FromBody] PaymentRequest paymentRequest)
         {
-            var recordPayment = _paymentRecordService.Insert(paymentRequest.Payment, paymentRequest.MerchantId);
-            return Ok(recordPayment);
+            try
+            {
+                var recordPayment = _paymentRecordService.Insert(merchantId, paymentRequest.Payment);
+                return Ok(recordPayment);
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

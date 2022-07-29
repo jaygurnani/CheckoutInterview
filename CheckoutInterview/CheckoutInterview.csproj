@@ -16,12 +16,14 @@
     <None Remove="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
     <None Remove="Models\Requests\" />
     <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Models\Response\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
     <Folder Include="Models\Requests\" />
+    <Folder Include="Models\Response\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CreditCardValidator" Version="3.0.1" />

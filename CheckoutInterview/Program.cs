@@ -8,7 +8,7 @@
     {
         public static void Main(string[] args)
         {
-            DBHelper.SeedDb(100);
+            DBHelper.SeedDb(50);
             CreateHostBuilder(args).Build().Run();
         }
 

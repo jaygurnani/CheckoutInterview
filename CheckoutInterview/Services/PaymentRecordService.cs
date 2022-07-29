@@ -1,5 +1,6 @@
 ﻿namespace CheckoutInterview.Repositories
 {
+    using System;
     using CheckoutInterview.Models;
     using Microsoft.Extensions.Logging;
 
@@ -14,14 +15,21 @@
             _logger = logger;
         }
 
-        public PaymentRecord GetPaymentRecord(int paymentRecordId, int merchantId)
+        public Tuple<PaymentRecord, int?> GetPaymentRecord(int merchantId, int paymentRecordId)
         {
-            return _paymentRecordRepository.GetPaymentRecord(paymentRecordId, merchantId);
+            var getPaymentRecord = _paymentRecordRepository.GetPaymentRecord(merchantId, paymentRecordId);
+            return Tuple.Create(getPaymentRecord.Item1, getPaymentRecord.Item2);
         }
 
-        public int Insert(Payment payment, int merchantId)
+        public int Insert(int merchantId, Payment payment)
         {
-            int paymentRecordId = _paymentRecordRepository.Insert(payment, merchantId, false);
+            var validator = new CreditCardValidator.CreditCardDetector(payment.CreditCardNumber);
+            if (!validator.IsValid())
+            {
+                throw new ApplicationException("Credit card number is invalid");
+            }
+
+            int paymentRecordId = _paymentRecordRepository.Insert(merchantId, payment, false);
             return paymentRecordId;
         }
     }

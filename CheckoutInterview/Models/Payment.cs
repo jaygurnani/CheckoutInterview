@@ -21,10 +21,6 @@
         [JsonConverter(typeof(StringEnumConverter))]
         public Currency Currency { get; set; }
 
-        [JsonProperty("cardIssuer")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public CardBrand CardIssuer { get; set; }
-
         [JsonProperty("cvv")]
         public string CVV { get; set; }
     }

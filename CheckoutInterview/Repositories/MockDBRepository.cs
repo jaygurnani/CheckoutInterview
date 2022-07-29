@@ -20,12 +20,37 @@
             _logger = logger;
         }
 
-        public PaymentRecord GetPaymentRecord(int paymentRecordId, int merchantId)
+        public Tuple<PaymentRecord, int?> GetPaymentRecord(int merchantId, int paymentRecordId)
         {
-            return _mockDB.Where(x => x.PaymentRecordId == paymentRecordId && x.MerchantId == merchantId).SingleOrDefault();
+            int? nextItem;
+
+            var merchantRecords = _mockDB.Where(x => x.MerchantId == merchantId).ToList();
+
+            var merchantTotalCount = merchantRecords.Count();
+            var currentRecord = merchantRecords.Where(x => x.PaymentRecordId == paymentRecordId).SingleOrDefault();
+
+            if (currentRecord == null)
+            {
+                throw new ArgumentException($"PaymentRecordId: {paymentRecordId} for merchant: {merchantId} does not exist");
+            }
+
+            var currentRecordIndex = merchantRecords.IndexOf(currentRecord);
+
+            int nextRecordIndex = currentRecordIndex + 1;
+
+            if (merchantTotalCount <= nextRecordIndex)
+            {
+                nextItem = null;
+            } else
+            {
+                var nextRecord = merchantRecords[nextRecordIndex];
+                nextItem = nextRecord.PaymentRecordId;
+            }
+
+            return Tuple.Create(currentRecord, nextItem);
         }
 
-        public int Insert(Payment payment, int merchantId, bool isSuccess)
+        public int Insert(int merchantId, Payment payment, bool isSuccess)
         {
             var newCount = _mockDB.Count + 1;
             var item = new PaymentRecord

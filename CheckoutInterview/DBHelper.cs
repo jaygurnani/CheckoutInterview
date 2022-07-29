@@ -9,6 +9,13 @@
 
     public static class DBHelper
     {
+        public enum CardBrand
+        {
+            VISA,
+            AMEX,
+            MASTERCARD,
+        }
+
         public static void SeedDb(int size)
         {
             List<PaymentRecord> data = new List<PaymentRecord>();

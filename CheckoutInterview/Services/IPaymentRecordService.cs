@@ -1,11 +1,12 @@
 ﻿namespace CheckoutInterview.Repositories
 {
+    using System;
     using CheckoutInterview.Models;
 
     public interface IPaymentRecordService
     {
-        PaymentRecord GetPaymentRecord(int paymentRecordId, int merchantId);
+        Tuple<PaymentRecord, int?> GetPaymentRecord(int merchantId, int paymentRecordId);
 
-        int Insert(Payment payment, int merchantId);
+        int Insert(int merchantId, Payment payment);
     }
 }
