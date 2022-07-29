@@ -7,21 +7,21 @@
     using Microsoft.Extensions.Logging;
 
     [ApiController]
-    [Route("[controller]")]
-    public class MerchantController : ControllerBase
+    [Route("api/[controller]")]
+    public class GatewayController : ControllerBase
     {
-
-        private readonly ILogger<MerchantController> _logger;
+        private readonly ILogger<GatewayController> _logger;
         private readonly IPaymentRecordService _paymentRecordService;
 
-        public MerchantController(ILogger<MerchantController> logger, IPaymentRecordService paymentRecordService)
+        public GatewayController(ILogger<GatewayController> logger, IPaymentRecordService paymentRecordService)
         {
             _logger = logger;
             _paymentRecordService = paymentRecordService;
         }
 
         [HttpGet]
-        public IActionResult Get([FromQuery(Name = "paymentRecordId")] int paymentRecordId, [FromQuery(Name = "merchantId")] int merchantId)
+        [Route("{paymentRecordId:int}/{merchantId:int}")]
+        public IActionResult Get(int paymentRecordId, int merchantId)
         {
             var recordPayment = _paymentRecordService.GetPaymentRecord(paymentRecordId, merchantId);
             return Ok(recordPayment);
