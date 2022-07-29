@@ -45,8 +45,8 @@
         {
             try
             {
-                var recordPayment = _paymentRecordService.Insert(merchantId, paymentRequest.Payment);
-                return Ok(recordPayment);
+                var paymentRecordId = _paymentRecordService.Insert(merchantId, paymentRequest.Payment);
+                return Ok(new { paymentRecordId });
             } catch (Exception ex)
             {
                 return BadRequest(ex.Message);

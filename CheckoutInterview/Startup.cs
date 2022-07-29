@@ -1,6 +1,7 @@
 ﻿namespace CheckoutInterview
 {
     using CheckoutInterview.Repositories;
+    using CheckoutInterview.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@
             services.AddControllers();
             services.AddSingleton<IPaymentRecordRepository, MockDBRepository>();
             services.AddSingleton<IPaymentRecordService, PaymentRecordService>();
+            services.AddSingleton<IBankSimulator, BankSimulator>();
             services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen();
         }
