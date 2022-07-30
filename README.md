@@ -19,12 +19,13 @@ dotnet test
 ## Assumptions Made
 - No need for `async` code and this can be improved later.
 - Interaction with the API is done by `merchantId`. With this flow it means the merchant always get a static URL to use.
-- A cursor is returned so that the merchant can reconcillate the existing data. `NULL` is returned for the cursor if we are on the last item.
+- A cursor is returned so that the merchant can reconcillate the existing data. `NULL` is returned for the cursor if this is the last item.
 - The Merchant does not need the full credit card number on the response and so we mask it and assume all credit cards have 12+ digits.
 - Only 4 currencies can currently be used right now.
 - Unit test only written for the Service layer.
 - `Given/When/Then` structure used for unit testing.
 - SOLID principles applied to code.
+- No authentication or authorisation is currently implemented.
 
 ## Going beyond
 - Application intially seeds the database and so we can instantly test the code. This is setup in the `Program.cs` file with the function -           `DBHelper.SeedDb(50);` 
@@ -79,7 +80,7 @@ HTTP 400 - Credit card number is invalid
 - Seed data currently only seeds from 3 credit cards issuers. We should change this so it seeds from multiple credit card issuers.
 
 ## Cloud Technologies to be used
-- Once Dockerized code can be use EC2 and Fargate.
+- Once the application is Dockerized it can be use EC2 or Fargate.
 - Service code can be split into seperate seperate micro-services.
 - Database can be written to RDS in AWS.
 - Logger is currently unused, but can be wired up to CloudWatch logs.
