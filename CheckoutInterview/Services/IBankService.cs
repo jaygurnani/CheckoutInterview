@@ -1,6 +1,6 @@
 ﻿namespace CheckoutInterview.Services
 {
-    public interface IBankSimulator
+    public interface IBankService
     {
         /// <summary>
         /// Makes a payment to the bank.

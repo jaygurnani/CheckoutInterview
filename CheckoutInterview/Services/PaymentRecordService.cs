@@ -8,13 +8,13 @@
     public class PaymentRecordService : IPaymentRecordService
     {
         private readonly IPaymentRecordRepository _paymentRecordRepository;
-        private readonly IBankSimulator _bankSimulator;
-        private readonly ILogger<PaymentRecordService> _logger;
+        private readonly IBankService _bankService;
+        private readonly ILogger _logger;
 
-        public PaymentRecordService(IPaymentRecordRepository paymentRecordRepository, IBankSimulator bankSimulator, ILogger<PaymentRecordService> logger)
+        public PaymentRecordService(IPaymentRecordRepository paymentRecordRepository, IBankService bankService, ILogger logger)
         {
             _paymentRecordRepository = paymentRecordRepository;
-            _bankSimulator = bankSimulator;
+            _bankService = bankService;
             _logger = logger;
         }
 
@@ -43,7 +43,7 @@
             }
 
             // Make the call to the banking service and record its response in the DB
-            bool result = _bankSimulator.MakePayment(payment.CreditCardNumber, payment.CVV, payment.ExpiryMonth, payment.ExpiryYear);
+            bool result = _bankService.MakePayment(payment.CreditCardNumber, payment.CVV, payment.ExpiryMonth, payment.ExpiryYear);
 
             int paymentRecordId = _paymentRecordRepository.Insert(merchantId, payment, result);
             return paymentRecordId;

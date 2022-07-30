@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class BankSimulator : IBankSimulator
+    public class BankService : IBankService
     {
         public bool MakePayment(string creditCardNumber, string cvv, string expiryMonth, string expiryYear)
         {

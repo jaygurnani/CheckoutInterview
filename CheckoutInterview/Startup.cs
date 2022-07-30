@@ -23,7 +23,7 @@
             services.AddControllers();
             services.AddSingleton<IPaymentRecordRepository, MockDBRepository>();
             services.AddSingleton<IPaymentRecordService, PaymentRecordService>();
-            services.AddSingleton<IBankSimulator, BankSimulator>();
+            services.AddSingleton<IBankService, BankService>();
             services.AddControllers().AddNewtonsoftJson();
             services.AddSwaggerGen();
         }

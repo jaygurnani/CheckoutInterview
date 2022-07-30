@@ -10,10 +10,10 @@
     [Route("api/[controller]")]
     public class GatewayController : ControllerBase
     {
-        private readonly ILogger<GatewayController> _logger;
+        private readonly ILogger _logger;
         private readonly IPaymentRecordService _paymentRecordService;
 
-        public GatewayController(ILogger<GatewayController> logger, IPaymentRecordService paymentRecordService)
+        public GatewayController(ILogger logger, IPaymentRecordService paymentRecordService)
         {
             _logger = logger;
             _paymentRecordService = paymentRecordService;
