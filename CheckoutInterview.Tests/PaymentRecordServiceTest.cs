@@ -81,16 +81,16 @@ public class Tests
     public void CanRetrievePaymentRecord()
     {
         // Given
-        int? nextRecorId = 21;
+        int? nextPaymentRecordId = 21;
         paymentRecordRepository.Setup(x => x.GetPaymentRecord(
             It.IsAny<int>(),
-            It.IsAny<int>())).Returns(Tuple.Create<PaymentRecord, int?>(mockPaymentRecord, nextRecorId));
+            It.IsAny<int>())).Returns(Tuple.Create<PaymentRecord, int?>(mockPaymentRecord, nextPaymentRecordId));
 
         // When
         var result = paymentRecordService.GetPaymentRecord(mockMerchantId, mockPaymentRecordId);
 
         // Then
         Assert.That(mockPaymentRecord, Is.EqualTo(result.Item1));
-        Assert.That(nextRecorId, Is.EqualTo(result.Item2));
+        Assert.That(nextPaymentRecordId, Is.EqualTo(result.Item2));
     }
 }

@@ -23,7 +23,7 @@
         public Tuple<PaymentRecord, int?> GetPaymentRecord(int merchantId, int paymentRecordId)
         {
             // Empty cursor
-            int? nextItem;
+            int? nextPaymentRecordId;
 
             // Get the data by merchantId
             var merchantRecords = _mockDB.Where(x => x.MerchantId == merchantId).ToList();
@@ -43,14 +43,14 @@
             // This logic handles the cursor
             if (merchantTotalCount <= nextRecordIndex)
             {
-                nextItem = null;
+                nextPaymentRecordId = null;
             } else
             {
-                var nextRecord = merchantRecords[nextRecordIndex];
-                nextItem = nextRecord.PaymentRecordId;
+                var nextPaymentRecord = merchantRecords[nextRecordIndex];
+                nextPaymentRecordId = nextPaymentRecord.PaymentRecordId;
             }
 
-            return Tuple.Create(currentRecord, nextItem);
+            return Tuple.Create(currentRecord, nextPaymentRecordId);
         }
 
         public int Insert(int merchantId, Payment payment, bool isSuccess)

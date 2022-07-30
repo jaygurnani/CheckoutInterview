@@ -7,7 +7,7 @@
         [JsonProperty("paymentRecord")]
         public PaymentRecord PaymentRecord { get; set; }
 
-        [JsonProperty("nextItem")]
-        public int? NextItem { get; set; }
+        [JsonProperty("nextPaymentRecordId")]
+        public int? NextPaymentRecordId { get; set; }
     }
 }

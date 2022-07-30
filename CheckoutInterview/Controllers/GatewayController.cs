@@ -35,7 +35,7 @@
                 var response = new GetResponse
                 {
                     PaymentRecord = getPaymentRecord.Item1,
-                    NextItem = getPaymentRecord.Item2,
+                    NextPaymentRecordId = getPaymentRecord.Item2,
                 };
 
                 return Ok(response);
