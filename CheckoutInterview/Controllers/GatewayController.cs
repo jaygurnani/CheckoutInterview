@@ -7,7 +7,7 @@
     using Microsoft.Extensions.Logging;
 
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public class GatewayController : ControllerBase
     {
         private readonly ILogger _logger;

@@ -26,6 +26,7 @@ dotnet test
 - `Given/When/Then` structure used for unit testing.
 - SOLID principles applied to code.
 - No authentication or authorisation is currently implemented.
+- Versioning is done in the URL via `/v1/`
 
 ## Going beyond
 - Application intially seeds the database and so we can instantly test the code. This is setup in the `Program.cs` file with the function -           `DBHelper.SeedDb(50);` 
@@ -36,7 +37,7 @@ dotnet test
 - Using `Stylecop` to help with C# code styling.
 
 ## Sample Response
-### Get Request - https://localhost:5001/api/Gateway/{merchantId}/{paymentRecordId}
+### Get Request - https://localhost:5001/api/v1/Gateway/{merchantId}/{paymentRecordId}
 ```
 {
     "paymentRecord": {
@@ -56,7 +57,7 @@ dotnet test
 }
 ```
 
-### Post Request https://localhost:5001/api/Gateway/{merchantId}
+### Post Request https://localhost:5001/api/v1/Gateway/{merchantId}
 - Returns the Id of the newly created payment record
 ```
 {
