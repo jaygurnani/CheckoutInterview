@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "70a226f8-d1e6-4bbe-8d40-58300e981116",
+		"_postman_id": "c21a1570-5312-41ff-8a4b-05bed0df7681",
 		"name": "Checkout Interview",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,14 +11,17 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:5001/weatherforecast",
+					"raw": "https://localhost:5001/api/Gateway/1/51",
 					"protocol": "https",
 					"host": [
 						"localhost"
 					],
 					"port": "5001",
 					"path": [
-						"weatherforecast"
+						"api",
+						"Gateway",
+						"1",
+						"51"
 					]
 				}
 			},

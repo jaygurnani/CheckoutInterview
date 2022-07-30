@@ -14,7 +14,7 @@
         private readonly ILogger _logger;
         private readonly string _mockDBFile = "./MockDB.json";
 
-        public MockDBRepository(ILogger logger)
+        public MockDBRepository(ILogger<MockDBRepository> logger)
         {
             _mockDB = JsonConvert.DeserializeObject<List<PaymentRecord>>(File.ReadAllText(@"MockDB.json"));
             _logger = logger;

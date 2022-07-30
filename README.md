@@ -2,17 +2,16 @@
 
 ## How to run
 
-Navigate to the `CheckoutInterview` folder and run the following in a command line
-
+Navigate to the `CheckoutInterview` folder and run the following in a command line:
 ```
-dotnet run
+dotnet run --project CheckoutInterview
 ```
 
 Navigate to: `https://localhost:5001/swagger/`
 And you should be able to make a request via the Swagger UI
 Alternatively you import the Postman file `Checkout Interview.postman_collection.json` to test the requests
 
-To run the unit test run in a command line
+To run the unit test run in a command line:
 ```
 dotnet test
 ```
@@ -27,7 +26,7 @@ dotnet test
 - Given/When/Then structure used for unit testing.
 
 ## Going beyond
-- Application intially seeds the database and so we can instantly test the code.
+- Application intially seeds the database and so we can instantly test the code. This is setup in the `Program.cs` file with the function -           `DBHelper.SeedDb(50);` 
 - Swagger UI is hooked up for testing.
 - Credit card validation is done using a 3rd party library. Invalid credit cards numbers will be rejected.
 - Cursor is returned so the merchant can see what records are next in the database.

@@ -11,7 +11,7 @@
         private readonly IBankService _bankService;
         private readonly ILogger _logger;
 
-        public PaymentRecordService(IPaymentRecordRepository paymentRecordRepository, IBankService bankService, ILogger logger)
+        public PaymentRecordService(IPaymentRecordRepository paymentRecordRepository, IBankService bankService, ILogger<PaymentRecordService> logger)
         {
             _paymentRecordRepository = paymentRecordRepository;
             _bankService = bankService;

@@ -11,7 +11,7 @@ public class Tests
     private IPaymentRecordService paymentRecordService;
     private Mock<IPaymentRecordRepository> paymentRecordRepository;
     private Mock<IBankService> bankService;
-    private Mock<ILogger> logger;
+    private Mock<ILogger<PaymentRecordService>> logger;
     private int mockMerchantId;
     private int mockPaymentRecordId;
 
@@ -23,7 +23,7 @@ public class Tests
     {
         paymentRecordRepository = new Mock<IPaymentRecordRepository>();
         bankService = new Mock<IBankService>();
-        logger = new Mock<ILogger>();
+        logger = new Mock<ILogger<PaymentRecordService>>();
         mockPayment = new Payment
         {
             Amount = 100,

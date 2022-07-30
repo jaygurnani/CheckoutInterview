@@ -13,7 +13,7 @@
         private readonly ILogger _logger;
         private readonly IPaymentRecordService _paymentRecordService;
 
-        public GatewayController(ILogger logger, IPaymentRecordService paymentRecordService)
+        public GatewayController(ILogger<GatewayController> logger, IPaymentRecordService paymentRecordService)
         {
             _logger = logger;
             _paymentRecordService = paymentRecordService;
